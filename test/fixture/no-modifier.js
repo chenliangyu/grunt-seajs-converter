@@ -1,0 +1,1 @@
+define(function(){require("jquery");require("a");require("b")});

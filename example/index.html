@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script src="lib/sea-debug.js" id="seajsnode"></script>
+<script>
+    seajs.use("config",function(config){
+        seajs.config(config);
+        seajs.use("main",function(main){
+            main();
+        })
+    })
+</script>
+</html>

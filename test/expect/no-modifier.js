@@ -1,0 +1,1 @@
+define("test/fixture/no-modifier",["jquery","a","b"],function(){require("jquery");require("a");require("b")});

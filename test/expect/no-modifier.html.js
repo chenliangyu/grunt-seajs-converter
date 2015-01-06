@@ -1,0 +1,1 @@
+define("test/fixture/no-modifier.html",[],'<script src="http://code.jquery.com/jquery.min.js"></script><div class="a"><a href="http://www.baidu.com/?keyword=something">搜索</a></div>');
