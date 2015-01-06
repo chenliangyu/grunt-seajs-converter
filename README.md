@@ -71,11 +71,35 @@ grunt.initConfig({
 
 ### Options
 
+#### options.base
+base文件夹路径，所有没定义id的module在生成的id为module文件相对于base文件夹的位置。
+例：module的路径为/example/main.js,base为example.则在生成的main module的id为main;
 #### options.converters
 编写自定义转换函数。与文件的后缀名对应，每个后缀名可以对应一个数组。
+converter的格式为
+```js
+var converter = function(file,options){}
+```
+插件已定义的converter有
+```js
+".js" : [script.jsConverter],
+'.html': [text.htmlConverter],
+'.json': [json.jsonConverter],
+'.tpl': [text.htmlConverter],
+'.handlebars': [template.handlerbarsConverter]
+```
+file参数的值为
+```js
+{
+  src:"file src",
+  dest:"file dest"
+}
+```
+options则是grunt任务接收的参数
 #### options.handlebars
 与handlebars相关的配置，其中id为handlebars runtime lib的地址，可以是cdn地址也可以是项目中的alias名.
-其余配置均与handlebars的precompile的配置相同
+其余配置均与handlebars的precompile的配置相同,可参照
+[Handlebars.precompile](http://handlebarsjs.com/reference.html).
 #### options.uglifyjs
 与uglifyjs的输出配置相同,用于转换成功后输出结果
 #### options.modifiers
@@ -114,14 +138,22 @@ grunt.initConfig({
   seajs_converter:{
           config : {
               options:{
-                  base : "example/lib"
+                  base : "example/lib",
+                  modifiers:{
+                    id:{
+                      "config":"config-debug"
+                    }
+                  }
               },
               src : "example/lib/config.js",
               dest : "tmp/lib/config.js"
           },
           other : {
               options : {
-                  base : "example"
+                  base : "example",
+                  modifiers:{
+                    dependency:[[/^jquery/],"$"]
+                  }
               },
               files:[{
                   expand : true,
