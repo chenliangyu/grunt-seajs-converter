@@ -76,10 +76,6 @@ base文件夹路径，所有没定义id的module在生成的id为module文件相
 例：module的路径为/example/main.js,base为example.则在生成的main module的id为main;
 #### options.converters
 编写自定义转换函数。与文件的后缀名对应，每个后缀名可以对应一个数组。
-converter的格式为
-```js
-var converter = function(file,options){}
-```
 插件已定义的converter有
 ```js
 ".js" : [script.jsConverter],
@@ -88,6 +84,11 @@ var converter = function(file,options){}
 '.tpl': [text.htmlConverter],
 '.handlebars': [template.handlerbarsConverter]
 ```
+converter的格式为
+```js
+var converter = function(file,options){}
+```
+
 file参数的值为
 ```js
 {
