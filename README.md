@@ -89,7 +89,7 @@ grunt.initConfig({
         }
     }
  }
-
+ ```
  ```js
  seajs_converter:{
      modifier:{
@@ -98,6 +98,7 @@ grunt.initConfig({
          }
      }
   }
+  ```
   如果是函数，这一定需要返回值，其中，dependency定义为函数时返回null则代表删除该dependency；
    ```js
  seajs_converter:{
@@ -105,7 +106,7 @@ grunt.initConfig({
          id :[[/regexpfortesttargetId/,idafterChange]]
      }
   }
-
+```
   以上三种模式当用于dependency时，这代表的是dependencies数组中的每一个单独的dependency；
   以下是具体示例。
 ```js
