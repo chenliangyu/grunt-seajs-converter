@@ -1,7 +1,7 @@
 {
   "name": "grunt-seajs-converter",
   "description": "convert seajs module to cmd",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/chenliangyu/grunt-seajs-converter",
   "author": {
     "name": "chenliangyu",
@@ -40,6 +40,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "cmd-util": "^0.3.13"
+    "cmd-util": "^0.3.13",
+    "handlebars": "^2.0.0"
   }
 }
