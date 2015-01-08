@@ -78,5 +78,5 @@ exports.init = function(grunt){
     return {
         tplConverter : tplConverter,
         handlerbarsConverter : handlerbarsConverter
-    }
+    };
 };

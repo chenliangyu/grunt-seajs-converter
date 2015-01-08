@@ -16,6 +16,8 @@ describe("Test Javascript Converter",function(){
         expect(util.generateId(fileSrc,base)).toEqual("expect/a");
         base = "./"
         expect(util.generateId(fileSrc,base)).toEqual("test/expect/a");
+        base = "test/other";
+        expect(util.generateId(fileSrc,base)).toEqual("../expect/a");
     });
     it("should modify id via idModifier",function(){
         var id = "a";
