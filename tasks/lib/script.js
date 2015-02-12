@@ -38,9 +38,23 @@ exports.init = function(grunt){
         o.require = requireModifier ?  refactorModifier(requireModifier) :undefined;
         o.async = asyncModifier ? refactorModifier(asyncModifier) : undefined;
         astCache = ast.modify(astCache,o);
+        var metaAfterModify = ast.parseFirst(astCache);
+        var dependencies = uniqDeps(metaAfterModify.dependencies);
+        astCache = ast.modify(astCache,{dependencies : dependencies});
         var data = astCache.print_to_string(options.uglifyjs);
         grunt.file.write(file.dest,data);
     };
+    function uniqDeps(deps){
+        var depsMapping = {};
+        var newDeps = [];
+        deps.forEach(function(dep){
+            if(!depsMapping[dep]){
+                depsMapping[dep] = 1;
+                newDeps.push(dep);
+            }
+        });
+        return newDeps;
+    }
     function modifyId(id,idModifier){
         var type = grunt.util.kindOf(idModifier);
         var modifier = refactorModifier(idModifier);
